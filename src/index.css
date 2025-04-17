@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,20 +37,17 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  :root {
+    @apply dark;
   }
 
   .dark {
@@ -96,6 +95,105 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-github-dark text-github-text;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  ::selection {
+    @apply bg-github-accent/30 text-white;
+  }
+}
+
+@layer utilities {
+  .scrollbar-github {
+    scrollbar-width: thin;
+    scrollbar-color: #30363d transparent;
+  }
+
+  .scrollbar-github::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-github::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-github::-webkit-scrollbar-thumb {
+    background-color: #30363d;
+    border-radius: 20px;
+    border: 2px solid transparent;
+  }
+
+  .markdown-github {
+    @apply text-github-text;
+  }
+
+  .markdown-github h1 {
+    @apply text-2xl font-bold mb-4 mt-6 pb-2 border-b border-github-border;
+  }
+
+  .markdown-github h2 {
+    @apply text-xl font-bold mb-3 mt-5 pb-2 border-b border-github-border;
+  }
+
+  .markdown-github h3 {
+    @apply text-lg font-bold mb-3 mt-4;
+  }
+
+  .markdown-github p {
+    @apply mb-4;
+  }
+
+  .markdown-github ul {
+    @apply list-disc pl-6 mb-4;
+  }
+
+  .markdown-github ol {
+    @apply list-decimal pl-6 mb-4;
+  }
+
+  .markdown-github li {
+    @apply mb-1;
+  }
+
+  .markdown-github code {
+    @apply font-mono bg-github-highlight px-1 py-0.5 rounded text-sm;
+  }
+
+  .markdown-github pre {
+    @apply font-mono bg-github-highlight p-4 rounded-md mb-4 overflow-x-auto;
+  }
+
+  .markdown-github pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .markdown-github blockquote {
+    @apply border-l-4 border-github-border pl-4 italic text-github-muted my-4;
+  }
+
+  .markdown-github a {
+    @apply text-github-accent hover:underline;
+  }
+
+  .markdown-github table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  .markdown-github th {
+    @apply border border-github-border px-4 py-2 text-left bg-github-highlight;
+  }
+
+  .markdown-github td {
+    @apply border border-github-border px-4 py-2;
+  }
+
+  .markdown-github hr {
+    @apply my-6 border-github-border;
   }
 }
