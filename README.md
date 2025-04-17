@@ -1,20 +1,21 @@
-# GH2Blog 🚀
+# GitDocs
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/downloads/)
-[![React](https://img.shields.io/badge/React-18.0+-61DAFB.svg?logo=react&logoColor=white)](https://reactjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-13+-000000.svg?logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Flask](https://img.shields.io/badge/Flask-2.0+-000000.svg?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 
-**GH2Blog** transforms GitHub repositories into polished technical blog posts using AI.
+**GitDocs** transforms GitHub repositories into polished technical blog posts using AI.
 
-![GH2Blog Demo](https://via.placeholder.com/800x400?text=GH2Blog+Demo)
+## 🎥 **I'll be releasing a video soon** showcasing the tool and walking through how to use it effectively.
+
 
 ## 🌟 Features
 
 - **One-Click Blog Generation**: Enter a GitHub repo URL, get a complete technical blog post
 - **Smart Repository Analysis**: Automatically detects tech stack, parses README, and extracts meaningful code snippets
 - **AI-Powered Content**: Leverages modern language models to create coherent, informative technical content
-- **Clean React Frontend**: Modern responsive interface built with React and Tailwind CSS
+- **Clean NextJS Frontend**: Modern responsive interface built with NextJS and Tailwind CSS
 - **Local Fallback**: Continues to function even when AI services are unavailable
 
 ## 🚀 Getting Started
@@ -70,7 +71,7 @@
 
 ## 🔧 How It Works
 
-GH2Blog operates in three main stages:
+GitDocs operates in three main stages:
 
 1. **Repository Analysis**:
    - Clones the target repository
@@ -125,5 +126,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - OpenRouter API for AI integration
-- React and Flask communities for excellent documentation
+- NextJS and Flask communities for excellent documentation
 - All the open-source libraries that made this project possible
