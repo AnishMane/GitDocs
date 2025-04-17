@@ -43,7 +43,7 @@ export const AppContainer: React.FC = () => {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <FileCode className="h-6 w-6 text-github-accent" />
-            <h1 className="text-xl font-bold text-white">AutoDev Blog Wrapper</h1>
+            <h1 className="text-xl font-bold text-white">GitDocs</h1>
           </div>
           <div className="flex items-center gap-2">
             <GitBranch className="h-5 w-5 text-github-muted" />
@@ -80,10 +80,10 @@ export const AppContainer: React.FC = () => {
 
       <footer className="border-t border-github-border bg-github-darker py-4 px-6">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between text-sm text-github-muted">
-          <div>© {new Date().getFullYear()} AutoDev Blog Wrapper</div>
+          <div>© {new Date().getFullYear()} GitDocs</div>
           <div className="flex items-center gap-4 mt-2 sm:mt-0">
-            <a href="#" className="hover:text-github-accent transition-colors">Documentation</a>
-            <a href="#" className="hover:text-github-accent transition-colors">GitHub</a>
+            {/* <a href="#" className="hover:text-github-accent transition-colors">Documentation</a> */}
+            <a href="https://github.com/AnishMane/GitDocs" className="hover:text-github-accent transition-colors">GitHub</a>
           </div>
         </div>
       </footer>
