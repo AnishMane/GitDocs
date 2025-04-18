@@ -1,14 +1,18 @@
-# GitDocs
+<div align="center">
+  <img src="./logo.svg" width="180" height="180" alt="GitDocs Logo">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/downloads/)
-[![Next.js](https://img.shields.io/badge/Next.js-13+-000000.svg?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.0+-000000.svg?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+  <h1>GitDocs</h1>
+  <p><strong>Transform GitHub repositories into polished technical blog posts using AI</strong></p>
 
-**GitDocs** transforms GitHub repositories into polished technical blog posts using AI.
+  <p>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+    <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/Python-3.8+-green.svg" alt="Python"></a>
+    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-13+-000000.svg?logo=next.js&logoColor=white" alt="Next.js"></a>
+    <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-2.0+-000000.svg?logo=flask&logoColor=white" alt="Flask"></a>
+  </p>
+</div>
 
 ## 🎥 **I'll be releasing a video soon** showcasing the tool and walking through how to use it effectively.
-
 
 ## 🌟 Features
 
