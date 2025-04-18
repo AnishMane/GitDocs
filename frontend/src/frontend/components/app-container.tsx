@@ -1,11 +1,11 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import { RepoForm } from "./repo-form";
 import { BlogDisplay } from "./blog-display";
 import { LoadingView } from "./loading-view";
 import { ErrorMessage } from "./error-message";
-import { GitBranch, FileCode, Globe } from "lucide-react";
+import { GitBranch, Globe } from "lucide-react";
+import { GitDocsLogo } from "./GitDocsLogo"; // Import the new logo component
 
 export const AppContainer: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -42,7 +42,7 @@ export const AppContainer: React.FC = () => {
       <header className="border-b border-github-border bg-github-darker py-4 px-6">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FileCode className="h-6 w-6 text-github-accent" />
+            <GitDocsLogo className="h-6 w-6 text-github-accent" /> {/* Replaced FileCode with custom logo */}
             <h1 className="text-xl font-bold text-white">GitDocs</h1>
           </div>
           <div className="flex items-center gap-2">
@@ -82,7 +82,6 @@ export const AppContainer: React.FC = () => {
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between text-sm text-github-muted">
           <div>© {new Date().getFullYear()} GitDocs</div>
           <div className="flex items-center gap-4 mt-2 sm:mt-0">
-            {/* <a href="#" className="hover:text-github-accent transition-colors">Documentation</a> */}
             <a href="https://github.com/AnishMane/GitDocs" className="hover:text-github-accent transition-colors">GitHub</a>
           </div>
         </div>
