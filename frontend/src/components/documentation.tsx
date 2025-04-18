@@ -185,14 +185,14 @@ export const Documentation: React.FC = () => {
         <div className="prose prose-invert prose-github max-w-none">
           <h3 className="text-white font-medium text-xl mb-4">Step 1: Start the backend server</h3>
           <CodeBlock 
-            code="cd backend\npython -u app.py" 
+            code={"cd backend\npython -u app.py" }
             id="run-backend" 
           />
           <p className="text-github-muted mb-6">The backend will be available at <a href="http://localhost:5000" target="_blank" rel="noopener noreferrer" className="text-github-accent hover:underline inline-flex items-center gap-1">http://localhost:5000 <ExternalLink className="h-3 w-3" /></a></p>
 
           <h3 className="text-white font-medium text-xl mb-4">Step 2: In a new terminal, start the frontend</h3>
           <CodeBlock 
-            code="cd frontend\nnpm run dev" 
+            code={"cd frontend\nnpm run dev" }
             id="run-frontend" 
           />
           <p className="text-github-muted mb-3">The application will be available at <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className="text-github-accent hover:underline inline-flex items-center gap-1">http://localhost:3000 <ExternalLink className="h-3 w-3" /></a></p>
@@ -250,17 +250,6 @@ export const Documentation: React.FC = () => {
             <li>5. Open a Pull Request</li>
           </ol>
 
-          <h3 className="text-white font-medium text-xl mt-6 mb-4">License</h3>
-          <p className="text-github-muted">
-            This project is licensed under the MIT License - see the LICENSE file for details.
-          </p>
-
-          <h3 className="text-white font-medium text-xl mt-6 mb-4">Acknowledgments</h3>
-          <ul className="text-github-muted">
-            <li>OpenRouter API for AI integration</li>
-            <li>NextJS and Flask communities for excellent documentation</li>
-            <li>All the open-source libraries that made this project possible</li>
-          </ul>
         </div>
       </Section>
 

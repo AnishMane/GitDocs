@@ -1,4 +1,4 @@
-import { AppContainer } from "@/frontend/components/app-container";
+import { AppContainer } from "@/components/app-container";
 
 const Index = () => {
   return <AppContainer />;
