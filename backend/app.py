@@ -5,6 +5,7 @@ import traceback
 from github_utils import clone_and_parse_repo
 from ai_writer import generate_blog
 import os
+import requests
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -66,6 +67,54 @@ def test_env():
         "env_vars": list(os.environ.keys())
     }), 500
 
+@app.route('/test-openrouter', methods=['GET'])
+def test_openrouter():
+    try:
+        api_key = os.environ.get("OPENROUTER_API_KEY")
+        if not api_key:
+            return jsonify({
+                "status": "error",
+                "message": "No API key found"
+            }), 500
+
+        # Make a simple test request to OpenRouter
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://gitdocs-tw63.onrender.com",
+            "X-Title": "GitDocs"
+        }
+        
+        payload = {
+            "model": "openai/gpt-3.5-turbo",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "Hello, this is a test message."
+                }
+            ]
+        }
+        
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=10
+        )
+        
+        return jsonify({
+            "status": "ok" if response.status_code == 200 else "error",
+            "status_code": response.status_code,
+            "response": response.text[:200] if response.status_code != 200 else "Success",
+            "headers_sent": headers
+        })
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
 if __name__ == '__main__':
     logger.info("Starting Flask application")
-    app.run(debug=True, host='0.0.0.0')
+    # Increase timeout for development server
+    app.run(debug=True, host='0.0.0.0', threaded=True)

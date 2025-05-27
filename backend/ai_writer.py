@@ -125,7 +125,9 @@ def generate_blog(metadata):
             # Prepare the API request
             headers = {
                 "Authorization": f"Bearer {API_KEY}",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://gitdocs-tw63.onrender.com",
+                "X-Title": "GitDocs"
             }
             
             payload = {
@@ -137,42 +139,49 @@ def generate_blog(metadata):
                     }
                 ],
                 "temperature": 0.7,
-                "max_tokens": 1500
+                "max_tokens": 1500,
+                "stream": False  # Ensure we're not using streaming
             }
             
-            # Send the request
-            response = requests.post(
-                OPENROUTER_API_URL,
-                headers=headers,
-                json=payload,
-                timeout=60
-            )
-            
-            # Log the response status
-            logger.info(f"OpenRouter API response status: {response.status_code}")
-            
-            # Check if the response is valid
-            if response.status_code == 200:
-                try:
-                    response_data = response.json()
-                    logger.info("Successfully parsed JSON response")
-                    
-                    if "choices" in response_data and len(response_data["choices"]) > 0:
-                        if "message" in response_data["choices"][0]:
-                            content = response_data["choices"][0]["message"]["content"]
-                            logger.info("Successfully extracted blog content")
-                            return content
-                        else:
-                            logger.warning("Response format unexpected - missing 'message' field")
-                    else:
-                        logger.warning("Response format unexpected - missing 'choices' field")
+            # Send the request with a shorter timeout
+            try:
+                response = requests.post(
+                    OPENROUTER_API_URL,
+                    headers=headers,
+                    json=payload,
+                    timeout=30  # 30 second timeout for the API request
+                )
                 
-                except json.JSONDecodeError as e:
-                    logger.error(f"Failed to parse JSON response: {str(e)}")
-                    logger.info(f"Response content (first 200 chars): {response.text[:200]}")
-            else:
-                logger.error(f"API returned error code {response.status_code}")
-                logger.info(f"Error response: {response.text[:200]}")
+                # Log the response status and headers for debugging
+                logger.info(f"OpenRouter API response status: {response.status_code}")
+                
+                # Check if the response is valid
+                if response.status_code == 200:
+                    try:
+                        response_data = response.json()
+                        logger.info("Successfully parsed JSON response")
+                        
+                        if "choices" in response_data and len(response_data["choices"]) > 0:
+                            if "message" in response_data["choices"][0]:
+                                content = response_data["choices"][0]["message"]["content"]
+                                logger.info("Successfully extracted blog content")
+                                return content
+                            else:
+                                logger.warning("Response format unexpected - missing 'message' field")
+                        else:
+                            logger.warning("Response format unexpected - missing 'choices' field")
+                    
+                    except json.JSONDecodeError as e:
+                        logger.error(f"Failed to parse JSON response: {str(e)}")
+                        logger.info(f"Response content (first 200 chars): {response.text[:200]}")
+                else:
+                    logger.error(f"API returned error code {response.status_code}")
+                    logger.info(f"Error response: {response.text[:200]}")
+                
+            except requests.Timeout:
+                logger.error("Request to OpenRouter API timed out after 30 seconds")
+            except requests.RequestException as e:
+                logger.error(f"Request to OpenRouter API failed: {str(e)}")
             
             # If we get here, something went wrong with the API
             logger.info("Falling back to local blog generation")
