@@ -4,6 +4,7 @@ import logging
 import traceback
 from github_utils import clone_and_parse_repo
 from ai_writer import generate_blog
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -47,6 +48,23 @@ def generate_blog_route():
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok"}), 200
+
+@app.route('/test-env', methods=['GET'])
+def test_env():
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    if api_key:
+        key_preview = api_key[:4] + "..." + api_key[-4:] if len(api_key) > 8 else "***"
+        return jsonify({
+            "status": "ok",
+            "api_key_present": True,
+            "api_key_preview": key_preview,
+            "env_vars": list(os.environ.keys())
+        })
+    return jsonify({
+        "status": "error",
+        "api_key_present": False,
+        "env_vars": list(os.environ.keys())
+    }), 500
 
 if __name__ == '__main__':
     logger.info("Starting Flask application")

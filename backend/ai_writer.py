@@ -8,12 +8,21 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Try to load from .env file first (for local development)
 load_dotenv()
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-API_KEY = os.getenv("OPENROUTER_API_KEY")
-# Updated to use a valid model ID for OpenRouter
-MODEL = "openai/gpt-3.5-turbo"  # Fallback to a commonly available model
+API_KEY = os.environ.get("OPENROUTER_API_KEY")  # Changed from os.getenv to os.environ.get
+MODEL = "openai/gpt-3.5-turbo"
+
+# Log environment variable status
+if API_KEY:
+    key_preview = API_KEY[:4] + "..." + API_KEY[-4:] if len(API_KEY) > 8 else "***"
+    logger.info(f"API key found in environment: {key_preview}")
+else:
+    logger.error("No API key found in environment variables")
+    logger.error("Please ensure OPENROUTER_API_KEY is set in your environment")
+    logger.error("Current environment variables: " + ", ".join(os.environ.keys()))
 
 def sanitize_text(text):
     """Sanitize text to ensure it can be safely processed and sent to API."""
