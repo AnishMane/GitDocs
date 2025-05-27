@@ -22,7 +22,7 @@ export const AppContainer: React.FC = () => {
     setError(null);
 
     try {
-      const response = await axios.post("http://localhost:10000/generate-blog", {
+      const response = await axios.post("https://gitdocs-tw63.onrender.com/generate-blog", {
         repo_url: repoUrl,
       });
       
@@ -34,7 +34,7 @@ export const AppContainer: React.FC = () => {
     } catch (err: any) {
       console.error("Error generating blog:", err);
       const errorMessage = err.response?.data?.error || 
-        "Failed to connect to the backend server. Is it running at http://localhost:10000?";
+        "Failed to connect to the backend server. Is it running at https://gitdocs-tw63.onrender.com?";
       setError(errorMessage);
     } finally {
       setLoading(false);

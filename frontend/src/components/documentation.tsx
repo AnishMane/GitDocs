@@ -188,7 +188,7 @@ export const Documentation: React.FC = () => {
             code={"cd backend\npython -u app.py" }
             id="run-backend" 
           />
-          <p className="text-github-muted mb-6">The backend will be available at <a href="http://localhost:10000" target="_blank" rel="noopener noreferrer" className="text-github-accent hover:underline inline-flex items-center gap-1">http://localhost:10000 <ExternalLink className="h-3 w-3" /></a></p>
+          <p className="text-github-muted mb-6">The backend is available at <a href="https://gitdocs-tw63.onrender.com" target="_blank" rel="noopener noreferrer" className="text-github-accent hover:underline inline-flex items-center gap-1">https://gitdocs-tw63.onrender.com <ExternalLink className="h-3 w-3" /></a></p>
 
           <h3 className="text-white font-medium text-xl mb-4">Step 2: In a new terminal, start the frontend</h3>
           <CodeBlock 
