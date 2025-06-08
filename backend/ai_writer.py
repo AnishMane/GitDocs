@@ -13,7 +13,7 @@ load_dotenv()
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 API_KEY = os.environ.get("OPENROUTER_API_KEY")  # Changed from os.getenv to os.environ.get
-MODEL = "openai/gpt-3.5-turbo"
+MODEL = "openai/gpt-4o-mini"
 
 # Log environment variable status
 if API_KEY:
